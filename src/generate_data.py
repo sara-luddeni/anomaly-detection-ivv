@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 
 
 def generate_nominal_data(n_steps=1000, seed=42):
@@ -52,3 +53,19 @@ if __name__ == "__main__":
     data.to_csv("data/telemetry.csv", index=False)
 
     print(f"Generated data with {len(anomaly_indices)} point anomalies.")
+    
+    plt.plot(data["time"], data["temperature"], label="Temperature")
+    plt.scatter(
+        data.loc[data.is_anomaly == 1, "time"],
+        data.loc[data.is_anomaly == 1, "temperature"],
+        color="red",
+        label="Anomalies"
+    )
+    plt.xlabel("Time step")
+    plt.ylabel("Temperature (°C)")
+    plt.legend()
+
+
+    
+
+
