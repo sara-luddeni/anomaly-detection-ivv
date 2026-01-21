@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import torch
 from sklearn.preprocessing import StandardScaler
+import joblib
 
 data = pd.read_csv("data/telemetry.csv")
 
@@ -11,6 +12,8 @@ X_nominal = nominal_data[features].values  # shape (n_samples, n_features)
 
 scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X_nominal)
+
+joblib.dump(scaler, "scaler.save")
 
 X_tensor = torch.tensor(X_scaled, dtype=torch.float32)
 
