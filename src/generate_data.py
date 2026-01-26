@@ -64,6 +64,9 @@ if __name__ == "__main__":
     plt.xlabel("Time step")
     plt.ylabel("Temperature (°C)")
     plt.legend()
+    plt.savefig("data/temperature_plot.png")
+    print("Plot saved as data/temperature_plot.png")
+
 
 
     
